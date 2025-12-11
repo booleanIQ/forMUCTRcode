@@ -1,0 +1,37 @@
+:- discontiguous(rank/2).
+:- style_check(-singleton).
+rank(Yanosh,may).
+
+%aranks([cap,may,may,pod]).
+
+alowerrank(X,Y) :- Y = cap, X = may, member(X,[cap,may,may,pod]); Y = may, X = pod, member(X,[cap,may,may,pod]).
+
+%?—alowerrank(may,Y)        cap
+
+rank(Layosh,cap).
+
+ahigherrank(X,Y):- Y = pod, X = may, member(Y,[may,may,pod]); Y = may, X = cap, member(Y,[may,may,pod]).
+
+%?—ahigherrank(X,Y)        may, pod
+
+rank(Bela, pod).
+rank(Ferentz, may).
+
+rank(Andrash, may).
+
+%[art,let,cvz,sap,peh]
+
+unique([X|T]):-
+    not(member(X, T)), unique(T).
+unique([]).
+    
+
+combi(A,B,C,D,E):- 
+    member(A,[bela,yanosh,ferentz,andrash]), 
+    member(B,[yanosh,andrash]), 
+    member(C,[yanosh,bela,andrash]), 
+    member(D,[andrash]),
+    member(E,[layosh,bela,yanosh,ferentz,andrash]),
+    unique([A,B,C,D,E]).
+
+%?—combi(Art,Let,Cvz,Sap,Peh)
